@@ -32,6 +32,34 @@ axios.defaults.baseURL = config.baseURLApi;
 axios.defaults.headers.common['Content-Type'] = "application/json";
 axios.defaults.withCredentials = true;
 
+let authRedirectInProgress = false;
+
+axios.interceptors.response.use(
+  response => response,
+  error => {
+    const status = error && error.response ? error.response.status : null;
+    const requestConfig = error && error.config ? error.config : {};
+    const requestUrl = String(requestConfig.url || '');
+    const isLoginRequest = /\/login\/?$/.test(requestUrl);
+    const isProtectedPage = router.currentRoute.path.indexOf('/app') === 0;
+
+    if (status === 401 && !requestConfig.skipAuthRedirect && !isLoginRequest && isProtectedPage) {
+      localStorage.removeItem('user');
+
+      if (!authRedirectInProgress && router.currentRoute.path !== '/login') {
+        authRedirectInProgress = true;
+        router.replace(
+          { path: '/login', query: { reason: 'session-expired' } },
+          () => { authRedirectInProgress = false; },
+          () => { authRedirectInProgress = false; },
+        );
+      }
+    }
+
+    return Promise.reject(error);
+  },
+);
+
 Vue.use(BootstrapVue);
 Vue.use(VCalendar, {
   firstDayOfWeek: 2

@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import axios from 'axios';
 
 import Layout from '@/components/Layout/Layout';
 // Core
@@ -221,7 +222,19 @@ const router = new Router({
       name: 'Layout',
       component: Layout,
       beforeEnter: async (to, from, next) => {
-        isAuthenticated() ? next() : next({path: '/login'});
+        if (!isAuthenticated()) {
+          next({path: '/login'});
+          return;
+        }
+
+        try {
+          const response = await axios.get('/me', { skipAuthRedirect: true });
+          localStorage.setItem('user', JSON.stringify(response.data.user));
+          next();
+        } catch (error) {
+          localStorage.removeItem('user');
+          next({path: '/login', query: {reason: 'session-expired'}});
+        }
       },
       children: [
         // main pages
