@@ -1,0 +1,9 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Send all web requests through CodeIgniter's public folder.
+    RewriteCond %{REQUEST_URI} !^/costestimator/backend/public/ [NC]
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>

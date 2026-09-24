@@ -1,0 +1,8 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # During development, send the project root to the Vue dev server.
+    RewriteRule ^$ http://localhost:3000/ [R=302,L]
+</IfModule>

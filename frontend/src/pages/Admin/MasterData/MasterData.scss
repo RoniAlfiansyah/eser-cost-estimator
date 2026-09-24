@@ -1,0 +1,220 @@
+.master-data-page {
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .page-title {
+    margin-bottom: 8px;
+    color: #fff;
+  }
+
+  .page-subtitle {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .filter-bar {
+    margin-bottom: 24px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .master-table {
+    margin-bottom: 0;
+    table-layout: fixed;
+
+    > thead > tr > th {
+      white-space: nowrap;
+      color: rgba(255, 255, 255, 0.96) !important;
+      font-weight: 700 !important;
+      border-top: none !important;
+      border-bottom-color: rgba(255, 255, 255, 0.12) !important;
+    }
+
+    > tbody > tr > td {
+      vertical-align: middle;
+      color: rgba(255, 255, 255, 0.92) !important;
+      border-color: rgba(255, 255, 255, 0.08) !important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    > tbody > tr:nth-child(even) > td {
+      background: rgba(255, 255, 255, 0.025);
+    }
+  }
+
+  .action-column {
+    width: 164px;
+  }
+
+  .table-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .status-badge.active {
+    color: #8de39a;
+    background: rgba(64, 188, 105, 0.16);
+  }
+
+  .status-badge.inactive {
+    color: #ffb1b1;
+    background: rgba(236, 98, 95, 0.16);
+  }
+
+  .form-actions {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+  }
+
+  .form-actions.compact {
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+
+  .signature-preview-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .signature-preview-image {
+    display: block;
+    max-width: 240px;
+    max-height: 96px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 10px;
+    padding: 8px 12px;
+  }
+
+  .signature-preview-actions {
+    display: flex;
+    align-items: center;
+  }
+
+  .table-image-preview {
+    display: block;
+    width: 88px;
+    height: 38px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 8px;
+    padding: 4px 8px;
+  }
+
+  .col-id {
+    width: 78px;
+  }
+
+  .col-name {
+    width: 20%;
+  }
+
+  .col-name-wide {
+    width: 42%;
+  }
+
+  .col-category {
+    width: 22%;
+  }
+
+  .col-symbol {
+    width: 14%;
+  }
+
+  .col-duration {
+    width: 110px;
+  }
+
+  .col-price {
+    width: 170px;
+  }
+
+  .col-status {
+    width: 120px;
+  }
+
+  .col-signature {
+    width: 120px;
+  }
+
+  .col-updated {
+    width: 220px;
+  }
+
+  .col-actions {
+    width: 164px;
+  }
+}
+
+body.light-blue.theme--white {
+  .master-data-page {
+    .page-title {
+      color: #0f172a;
+    }
+
+    .page-subtitle {
+      color: #64748b;
+    }
+
+    .filter-bar {
+      border-bottom-color: rgba(203, 213, 225, 0.9);
+    }
+
+    .master-table {
+      > thead > tr > th {
+        color: #1e293b !important;
+        border-bottom-color: rgba(203, 213, 225, 0.95) !important;
+      }
+
+      > tbody > tr > td {
+        color: #334155 !important;
+        border-color: rgba(226, 232, 240, 0.95) !important;
+        background: rgba(255, 255, 255, 0.92);
+      }
+
+      > tbody > tr:nth-child(even) > td {
+        background: rgba(241, 245, 249, 0.9);
+      }
+    }
+
+    .status-badge.active {
+      color: #15803d;
+      background: rgba(22, 163, 74, 0.14);
+    }
+
+    .status-badge.inactive {
+      color: #b91c1c;
+      background: rgba(220, 38, 38, 0.12);
+    }
+
+    .signature-preview-box {
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(226, 232, 240, 0.95);
+    }
+  }
+}

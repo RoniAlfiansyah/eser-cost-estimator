@@ -1,0 +1,24 @@
+{
+  "format": "EserScheduler",
+  "version": 3,
+  "project": {
+    "name": "Contoh - Survei Hidrografi",
+    "dataDate": "2026-09-01",
+    "displayMode": "relative",
+    "projectStartDate": null,
+    "calendar": {"name": "Kalender 6 Hari", "workingDays": [1, 2, 3, 4, 5, 6]},
+    "baseline": null,
+    "deployments": [],
+    "activities": [
+      {"id":"HYD-010","wbs":"1.0","name":"Kickoff dan review ruang lingkup","duration":1,"pic":"Project Manager","predecessors":[],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"HYD-020","wbs":"1.0","name":"Perizinan, HSE plan, dan mobilisasi","duration":4,"pic":"Project Coordinator","predecessors":[{"id":"HYD-010","type":"FS","lag":0}],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"HYD-030","wbs":"2.0","name":"Reconnaissance dan pemasangan benchmark","duration":2,"pic":"Hydrographic Surveyor","predecessors":[{"id":"HYD-020","type":"FS","lag":0}],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"HYD-040","wbs":"2.0","name":"Instalasi dan observasi pasang surut","duration":15,"pic":"Oceanographer","predecessors":[{"id":"HYD-030","type":"FS","lag":0}],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"HYD-050","wbs":"3.0","name":"Bar check dan patch test","duration":1,"pic":"Hydrographic Surveyor","predecessors":[{"id":"HYD-030","type":"FS","lag":0}],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"HYD-060","wbs":"3.0","name":"Akuisisi data batimetri","duration":8,"pic":"Hydrographic Surveyor","predecessors":[{"id":"HYD-050","type":"FS","lag":0}],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"HYD-070","wbs":"4.0","name":"Processing dan QC data","duration":6,"pic":"Hydrographic Data Processor","predecessors":[{"id":"HYD-060","type":"SS","lag":1}],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"HYD-080","wbs":"5.0","name":"Penyusunan chart dan laporan akhir","duration":5,"pic":"Project Manager","predecessors":[{"id":"HYD-040","type":"FS","lag":0},{"id":"HYD-070","type":"FS","lag":0}],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"HYD-090","wbs":"5.0","name":"Review klien dan finalisasi deliverable","duration":3,"pic":"Project Manager","predecessors":[{"id":"HYD-080","type":"FS","lag":0}],"start":"2000-01-03","status":"Not started","progress":0}
+    ]
+  }
+}

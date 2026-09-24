@@ -1,0 +1,168 @@
+@import '../../../styles/app';
+
+.users-page {
+  .page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    @include media-breakpoint-down(sm) {
+      flex-direction: column;
+    }
+  }
+
+  .page-title {
+    margin-bottom: 4px;
+  }
+
+  .page-subtitle {
+    color: $text-muted;
+    margin-bottom: 0;
+  }
+
+  .users-table {
+    table-layout: fixed;
+
+    > thead > tr > th {
+      color: rgba(255, 255, 255, 0.96) !important;
+      font-weight: 700 !important;
+      border-top: none !important;
+      border-bottom-color: rgba(255, 255, 255, 0.12) !important;
+    }
+
+    td,
+    th {
+      vertical-align: middle;
+    }
+
+    > tbody > tr > td {
+      color: rgba(255, 255, 255, 0.92) !important;
+      border-color: rgba(255, 255, 255, 0.08) !important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .col-id {
+    width: 76px;
+  }
+
+  .col-name {
+    width: 150px;
+  }
+
+  .col-email {
+    width: 34%;
+  }
+
+  .col-role {
+    width: 110px;
+  }
+
+  .col-status {
+    width: 120px;
+  }
+
+  .col-login {
+    width: 180px;
+  }
+
+  .col-actions {
+    width: 170px;
+  }
+
+  .role-badge,
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 9px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .role-admin {
+    background: rgba($blue, 0.2);
+    color: lighten($blue, 18%);
+  }
+
+  .role-manager {
+    background: rgba($orange, 0.2);
+    color: lighten($orange, 14%);
+  }
+
+  .role-staff {
+    background: rgba($green, 0.18);
+    color: lighten($green, 25%);
+  }
+
+  .status-badge.active {
+    background: rgba($green, 0.18);
+    color: lighten($green, 25%);
+  }
+
+  .status-badge.inactive {
+    background: rgba($red, 0.16);
+    color: lighten($red, 20%);
+  }
+
+  .form-actions {
+    margin-top: 16px;
+  }
+
+  .form-actions.compact {
+    margin-top: 0;
+    display: flex;
+    gap: 10px;
+  }
+
+  .filter-bar {
+    margin-bottom: 22px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .user-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+}
+
+body.light-blue.theme--white {
+  .users-page {
+    .page-title {
+      color: #0f172a;
+    }
+
+    .page-subtitle {
+      color: #64748b;
+    }
+
+    .filter-bar {
+      border-bottom-color: rgba(203, 213, 225, 0.9);
+    }
+
+    .users-table > thead > tr > th {
+      color: #1e293b !important;
+      background: rgba(241, 245, 249, 0.96) !important;
+      border-bottom-color: rgba(203, 213, 225, 0.95) !important;
+    }
+
+    .users-table > tbody > tr > td {
+      color: #334155 !important;
+      background: rgba(255, 255, 255, 0.92) !important;
+      border-color: rgba(226, 232, 240, 0.95) !important;
+    }
+
+    .users-table > tbody > tr:nth-child(even) > td {
+      background: rgba(241, 245, 249, 0.9) !important;
+    }
+  }
+}

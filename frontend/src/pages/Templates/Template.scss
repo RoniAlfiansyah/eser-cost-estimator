@@ -1,0 +1,123 @@
+.template-page {
+  .page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .page-title {
+    color: #f5f7ff;
+    margin-bottom: 6px;
+  }
+
+  .page-subtitle {
+    color: rgba(237, 242, 255, 0.78);
+    margin-bottom: 0;
+  }
+
+  .template-table > thead > tr > th,
+  .template-table > tbody > tr > td,
+  .template-table > tfoot > tr > td {
+    color: #eef4ff !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    vertical-align: middle;
+  }
+
+  .template-table > thead > tr > th {
+    color: #ffffff !important;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+  }
+
+  .template-table > tbody > tr:nth-child(even) > td {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .template-table .form-control {
+    background: rgba(7, 11, 34, 0.92) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #f8fbff !important;
+    caret-color: #ffffff;
+  }
+
+  .template-table .form-control:focus {
+    color: #ffffff !important;
+    background: rgba(7, 11, 34, 0.98) !important;
+    border-color: rgba(82, 154, 255, 0.62) !important;
+    box-shadow: 0 0 0 1px rgba(82, 154, 255, 0.22) !important;
+  }
+
+  .template-table .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.48) !important;
+  }
+
+  .table-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  .form-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .form-actions.compact {
+    margin-top: 0;
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .status-badge.active {
+    background: rgba(90, 201, 111, 0.16);
+    color: #89f0a0 !important;
+  }
+
+  .status-badge.inactive {
+    background: rgba(255, 94, 94, 0.16);
+    color: #ff9a9a !important;
+  }
+}
+
+body.light-blue.theme--white {
+  .template-page {
+    .page-title {
+      color: #0f172a;
+    }
+
+    .page-subtitle {
+      color: #64748b;
+    }
+
+    .template-table > thead > tr > th {
+      color: #1e293b !important;
+      background: rgba(241, 245, 249, 0.96) !important;
+      border-bottom-color: rgba(203, 213, 225, 0.95) !important;
+    }
+
+    .template-table > tbody > tr > td,
+    .template-table > tfoot > tr > td {
+      color: #334155 !important;
+      background: rgba(255, 255, 255, 0.92) !important;
+      border-color: rgba(226, 232, 240, 0.95) !important;
+    }
+
+    .template-table > tbody > tr:nth-child(even) > td {
+      background: rgba(241, 245, 249, 0.9) !important;
+    }
+  }
+}

@@ -1,0 +1,492 @@
+@import '../../styles/app';
+
+.dashboard-page {
+  .page-title {
+    margin: 0;
+    font-size: 2.35rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: $text-color;
+  }
+
+  .page-subtitle {
+    margin: 0;
+    max-width: 720px;
+    color: rgba($text-color, 0.72);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .dashboard-hero {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 28px 30px;
+    margin-bottom: 24px;
+    border-radius: 24px;
+    background:
+      radial-gradient(circle at top right, rgba(94, 167, 255, 0.28), transparent 30%),
+      linear-gradient(135deg, rgba(53, 74, 141, 0.95), rgba(44, 49, 106, 0.92));
+    box-shadow: 0 22px 55px rgba(14, 19, 55, 0.18);
+  }
+
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .dashboard-hero,
+  .dashboard-hero .page-title,
+  .dashboard-hero .page-subtitle {
+    color: $white;
+  }
+
+  .dashboard-hero .page-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .hero-brand {
+    min-width: 220px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+
+  .hero-logo {
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+    opacity: 0.95;
+  }
+
+  .hero-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  .highlight-pill {
+    min-width: 160px;
+    padding: 12px 14px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+
+    strong {
+      display: block;
+      margin-top: 2px;
+      font-size: 1.35rem;
+      line-height: 1.2;
+      color: $white;
+    }
+  }
+
+  .highlight-label {
+    display: block;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.82rem;
+  }
+
+  .summary-grid {
+    margin-bottom: 10px;
+  }
+
+  .summary-widget {
+    height: calc(100% - 24px);
+  }
+
+  .summary-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 150px;
+  }
+
+  .summary-label {
+    color: rgba($text-color, 0.68);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .summary-value {
+    font-size: 1.85rem;
+    line-height: 1.2;
+    font-weight: 700;
+    color: $text-color;
+  }
+
+  .summary-note {
+    margin-top: auto;
+    color: rgba($text-color, 0.72);
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .status-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .status-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .section-title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: rgba($text-color, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .status-grid,
+  .master-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .status-card,
+  .master-card,
+  .quick-action,
+  .action-item,
+  .client-item {
+    border-radius: 18px;
+    border: 1px solid rgba($gray-400, 0.18);
+    background: var(--widget-bg);
+  }
+
+  .status-card {
+    padding: 16px 18px;
+  }
+
+  .status-card-label,
+  .master-card-label {
+    color: rgba($text-color, 0.68);
+    font-size: 0.85rem;
+  }
+
+  .status-card-value,
+  .master-card-value {
+    margin-top: 6px;
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: $text-color;
+  }
+
+  .master-card {
+    padding: 16px 18px;
+  }
+
+  .quick-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .quick-action {
+    display: block;
+    padding: 16px 18px;
+    text-decoration: none;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      text-decoration: none;
+      border-color: rgba($blue, 0.35);
+      box-shadow: 0 14px 26px rgba(18, 28, 77, 0.12);
+    }
+  }
+
+  .quick-action-title {
+    color: $text-color;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .quick-action-note {
+    margin-top: 6px;
+    color: rgba($text-color, 0.72);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .action-list,
+  .client-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .action-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 18px;
+  }
+
+  .action-title,
+  .client-name {
+    color: $text-color;
+    font-size: 0.98rem;
+    font-weight: 700;
+  }
+
+  .action-caption,
+  .client-meta,
+  .empty-state {
+    margin-top: 4px;
+    color: rgba($text-color, 0.68);
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  .action-value {
+    flex-shrink: 0;
+    min-width: 48px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: rgba($blue, 0.12);
+    color: $blue;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .client-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 18px;
+  }
+
+  .client-total {
+    color: $text-color;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .dashboard-table {
+    margin-top: 4px;
+
+    thead th {
+      border-top: 0;
+      border-bottom: 1px solid rgba($gray-400, 0.18);
+      color: rgba($text-color, 0.65);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: transparent;
+    }
+
+    tbody td {
+      border-color: rgba($gray-400, 0.16);
+      vertical-align: middle;
+      color: $text-color;
+    }
+  }
+
+  .empty-row {
+    padding: 22px 16px !important;
+    text-align: center;
+    color: rgba($text-color, 0.65) !important;
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .status-draft {
+    color: #46506a;
+    background: rgba(70, 80, 106, 0.14);
+  }
+
+  .status-submitted {
+    color: #a46b00;
+    background: rgba(255, 193, 7, 0.18);
+  }
+
+  .status-revision {
+    color: #c93c3c;
+    background: rgba(201, 60, 60, 0.14);
+  }
+
+  .status-approved,
+  .status-issued {
+    color: #2f7c39;
+    background: rgba(71, 130, 43, 0.16);
+  }
+
+  @media (max-width: 991.98px) {
+    .dashboard-hero {
+      flex-direction: column;
+      padding: 24px 22px;
+    }
+
+    .hero-brand {
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 1199.98px) {
+    .dashboard-hero {
+      gap: 18px;
+      padding: 24px 22px;
+    }
+
+    .page-title {
+      font-size: 2.05rem;
+    }
+
+    .hero-highlights {
+      gap: 10px;
+    }
+
+    .highlight-pill {
+      min-width: 132px;
+      padding: 10px 12px;
+    }
+
+    .highlight-pill strong {
+      font-size: 1.15rem;
+    }
+
+    .summary-card {
+      min-height: 128px;
+    }
+
+    .summary-value {
+      font-size: 1.55rem;
+    }
+
+    .status-card,
+    .master-card,
+    .action-item,
+    .client-item,
+    .quick-action {
+      padding: 14px 15px;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .page-title {
+      font-size: 1.9rem;
+    }
+
+    .status-grid,
+    .master-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .action-item,
+    .client-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .client-total {
+      text-align: left;
+    }
+  }
+}
+
+body.light-blue.theme--white {
+  .dashboard-page {
+    .summary-label,
+    .status-card-label,
+    .master-card-label,
+    .section-title,
+    .action-caption,
+    .client-meta,
+    .empty-state,
+    .dashboard-table thead th,
+    .empty-row {
+      color: #64748b !important;
+    }
+
+    .summary-value,
+    .status-card-value,
+    .master-card-value,
+    .quick-action-title,
+    .action-title,
+    .client-name,
+    .client-total,
+    .dashboard-table tbody td {
+      color: #0f172a !important;
+    }
+
+    .summary-note,
+    .quick-action-note {
+      color: #475569 !important;
+    }
+
+    .status-card,
+    .master-card,
+    .quick-action,
+    .action-item,
+    .client-item {
+      background: rgba(255, 255, 255, 0.94) !important;
+      border-color: rgba(203, 213, 225, 0.8) !important;
+    }
+
+    .action-value {
+      background: rgba(37, 99, 235, 0.1) !important;
+      color: #2563eb !important;
+    }
+
+    .dashboard-table thead th {
+      background: transparent !important;
+      border-bottom-color: rgba(203, 213, 225, 0.85) !important;
+    }
+
+    .dashboard-table tbody tr {
+      background: rgba(255, 255, 255, 0.96) !important;
+    }
+
+    .dashboard-table tbody tr:nth-child(even) {
+      background: rgba(248, 250, 252, 0.98) !important;
+    }
+
+    .dashboard-table tbody td {
+      background: transparent !important;
+      border-color: rgba(226, 232, 240, 0.9) !important;
+    }
+  }
+}

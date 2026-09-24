@@ -1,0 +1,24 @@
+{
+  "format": "EserScheduler",
+  "version": 3,
+  "project": {
+    "name": "Contoh - Assessment Jetty",
+    "dataDate": "2026-09-01",
+    "displayMode": "relative",
+    "projectStartDate": null,
+    "calendar": {"name": "Kalender 6 Hari", "workingDays": [1, 2, 3, 4, 5, 6]},
+    "baseline": null,
+    "deployments": [],
+    "activities": [
+      {"id":"JTY-010","wbs":"1.0","name":"Kickoff, desk study, dan review drawing","duration":3,"pic":"Project Manager","predecessors":[],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"JTY-020","wbs":"1.0","name":"Perizinan dan mobilisasi tim","duration":4,"pic":"Project Coordinator","predecessors":[{"id":"JTY-010","type":"FS","lag":0}],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"JTY-030","wbs":"2.0","name":"Visual inspection jetty dan trestle","duration":4,"pic":"Structural Engineer","predecessors":[{"id":"JTY-020","type":"FS","lag":0}],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"JTY-040","wbs":"2.0","name":"Dimensional survey dan pemetaan kerusakan","duration":5,"pic":"Surveyor","predecessors":[{"id":"JTY-020","type":"FS","lag":0}],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"JTY-050","wbs":"3.0","name":"Underwater inspection","duration":4,"pic":"Diving Inspector","predecessors":[{"id":"JTY-020","type":"FS","lag":0}],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"JTY-060","wbs":"3.0","name":"NDT dan pengujian material","duration":5,"pic":"NDT Inspector","predecessors":[{"id":"JTY-030","type":"SS","lag":1}],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"JTY-070","wbs":"4.0","name":"Analisis struktur dan evaluasi kapasitas","duration":10,"pic":"Structural Engineer","predecessors":[{"id":"JTY-030","type":"FS","lag":0},{"id":"JTY-040","type":"FS","lag":0},{"id":"JTY-050","type":"FS","lag":0},{"id":"JTY-060","type":"FS","lag":0}],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"JTY-080","wbs":"5.0","name":"Rekomendasi perbaikan dan estimasi prioritas","duration":5,"pic":"Lead Engineer","predecessors":[{"id":"JTY-070","type":"FS","lag":0}],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"JTY-090","wbs":"5.0","name":"Draft report, review, dan final report","duration":6,"pic":"Project Manager","predecessors":[{"id":"JTY-080","type":"FS","lag":0}],"start":"2000-01-03","status":"Not started","progress":0}
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+DEPLOY COST ESTIMATOR + SCHEDULER (SATU DATABASE)
+
+Database lokal yang sudah digabung: costestimator_db (MySQL).
+File costestimator-unified-fresh-install.sql berisi seluruh tabel dan data lokal,
+termasuk Scheduler, Basic Cost, pengguna, snapshot biaya lama, dan arsip audit
+EserScheduler pada tabel legacy_scheduler_audit_logs.
+
+PENTING: File SQL ini untuk DATABASE BARU/KOSONG. Jangan impor ke database
+hosting yang sudah berisi data tanpa membandingkan dan mencadangkannya dahulu.
+Ekspor ini berisi data pengguna lokal, termasuk hash kata sandi; simpan privat.
+
+1. Di cPanel, buat database MySQL kosong dan pengguna database.
+2. Impor costestimator-unified-fresh-install.sql melalui phpMyAdmin.
+3. Ekstrak costestimator-backend-unified.zip ke folder aplikasi API. Buat
+   subdomain api-cost.esergeosurvey.com dan arahkan document root-nya ke
+   subfolder public dari paket backend. Folder app, vendor, writable, dan .env
+   harus berada di luar document root.
+4. Salin .env.example menjadi .env di folder aplikasi API. Isi kredensial
+   database cPanel dan pastikan CI_ENVIRONMENT=production serta
+   app.baseURL=https://api-cost.esergeosurvey.com/. Jangan unggah .env lokal.
+5. Pastikan PHP 8.2+, ekstensi intl, mbstring, mysqli; folder writable dan
+   folder unggahan dapat ditulis oleh proses PHP.
+6. Ekstrak costestimator-frontend-current.zip ke document root cost.esergeosurvey.com.
+   File index.html harus berada langsung di document root.
+7. Aktifkan HTTPS untuk kedua subdomain. Uji /api/ping di subdomain API,
+   kemudian login, daftar proyek Scheduler, Basic Cost, dan ekspor Excel.
+
+Database SQLite EserScheduler lama tidak dibutuhkan untuk operasi aplikasi
+gabungan. Simpan salinannya sebagai arsip/backup dan hentikan pengeditan di
+aplikasi EserScheduler lama agar data tidak terpisah lagi.

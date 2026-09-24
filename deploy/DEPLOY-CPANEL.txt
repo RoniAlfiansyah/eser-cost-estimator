@@ -1,0 +1,32 @@
+DEPLOY COST ESTIMATOR KE CPANEL
+
+1. Database
+   - Buat database dan user MySQL di cPanel.
+   - Import file hosting_costestimator_bootstrap.sql lewat phpMyAdmin.
+   - Edit file backend/.env:
+     database.default.database = nama database cPanel
+     database.default.username = username database cPanel
+     database.default.password = password database cPanel
+
+2. Backend API
+   - Upload isi ZIP costestimator-backend-api.zip ke folder subdomain:
+     /home/ynsrmwpp/api-cost.esergeosurvey.com
+   - Extract ZIP di folder tersebut.
+   - Pastikan file .env sudah berisi kredensial database yang benar.
+   - Pastikan permission folder writable dan public/uploads bisa ditulis.
+     Umumnya 755 untuk folder dan 644 untuk file.
+
+3. Frontend
+   - Upload isi ZIP costestimator-frontend.zip ke folder subdomain:
+     /home/ynsrmwpp/cost.esergeosurvey.com
+   - Extract ZIP di folder tersebut.
+   - Setelah extract, index.html harus langsung berada di folder cost.esergeosurvey.com,
+     bukan di dalam subfolder dist atau frontend.
+
+4. URL final
+   - Frontend: https://cost.esergeosurvey.com
+   - Backend API: https://api-cost.esergeosurvey.com/api
+
+5. Login awal
+   - Gunakan akun yang sudah tersimpan di database produksi.
+   - Jangan menaruh password akun pada repository atau file deployment.

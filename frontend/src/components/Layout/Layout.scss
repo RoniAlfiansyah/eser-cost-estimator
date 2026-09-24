@@ -1,0 +1,51 @@
+@import '../../styles/app.scss';
+
+.root {
+  height: 100%;
+  transition: margin-left 0.25s ease;
+
+  @include media-breakpoint-up('md') {
+    margin-left: $sidebar-width;
+
+    @media print {
+      margin-left: 0;
+    }
+  }
+
+  @media (min-width: breakpoint-min('md')) and (max-width: 1199.98px) {
+    margin-left: 184px;
+  }
+
+  &.layout-sidebar-closed {
+    @include media-breakpoint-up('md') {
+      margin-left: 0;
+    }
+  }
+}
+
+.content {
+  position: relative;
+  flex-grow: 1;
+  // 1rem for footer height
+  padding: $content-padding $content-padding ($content-padding + 1rem);
+
+  @media (min-width: breakpoint-min('md')) and (max-width: 1199.98px) {
+    padding: 22px 18px 38px;
+  }
+
+  @media (max-width: breakpoint-max(sm)) {
+    padding: 20px 15px 40px;
+  }
+
+  // hammers disallows text selection, allowing it for large screens
+  @media (min-width: breakpoint-min(sm)) {
+    user-select: auto !important;
+  }
+}
+
+.contentFooter {
+  position: absolute;
+  bottom: 15px;
+  color: $text-muted;
+  padding: 0 $content-padding;
+}

@@ -1,0 +1,70 @@
+# Secrets and environment-specific configuration
+/backend/.env
+.env
+.env.*
+!.env.example
+
+# Dependencies and compiled frontend
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.npm-cache/
+/backend/vendor/
+/backend/composer.phar
+/backend/composer-setup.php
+/backend/*.zip
+
+# Runtime data
+/backend/writable/cache/**
+/backend/writable/debugbar/**
+/backend/writable/logs/**
+/backend/writable/session/**
+/backend/writable/backups/**
+/backend/public/uploads/**
+
+# Preserve protection/placeholder files in runtime directories
+!/backend/writable/cache/index.html
+!/backend/writable/debugbar/index.html
+!/backend/writable/logs/index.html
+!/backend/writable/session/index.html
+!/backend/writable/backups/index.html
+!/backend/public/uploads/index.html
+!/backend/public/uploads/.htaccess
+
+# Deployment outputs, database exports, and archives
+/deploy/hosting-*/
+/deploy/**/*.zip
+/deploy/**/*.sql
+/deploy/backend/
+/deploy/frontend/
+/*.sql
+**/*.sql
+/*.zip
+/backups/
+/output/
+/tmp/
+/tmp-pdfread/
+/.tmp-pdfread/
+/.ppt-build/
+
+# Local development logs
+*.log
+*.err.log
+*.out.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editors and operating system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Test/build caches
+coverage/
+.phpunit.result.cache

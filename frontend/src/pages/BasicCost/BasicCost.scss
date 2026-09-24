@@ -1,0 +1,230 @@
+.basic-cost-page {
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .page-header-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .page-title {
+    margin-bottom: 8px;
+    color: #fff;
+  }
+
+  .page-subtitle {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .basic-cost-table,
+  .master-table {
+    margin-bottom: 0;
+
+    > thead > tr > th {
+      color: rgba(255, 255, 255, 0.96) !important;
+      font-weight: 700 !important;
+      border-top: none !important;
+      border-bottom-color: rgba(255, 255, 255, 0.12) !important;
+    }
+
+    > tbody > tr > td,
+    > tfoot > tr > td {
+      vertical-align: middle;
+      color: rgba(255, 255, 255, 0.92) !important;
+      border-color: rgba(255, 255, 255, 0.08) !important;
+    }
+
+    th,
+    td {
+      white-space: nowrap;
+    }
+
+    td:nth-child(5),
+    td:nth-child(6),
+    td:nth-child(7) {
+      min-width: 130px;
+    }
+
+    .form-control {
+      background: rgba(7, 11, 34, 0.92) !important;
+      border-color: rgba(255, 255, 255, 0.12) !important;
+      color: #f8fbff !important;
+      caret-color: #ffffff;
+    }
+
+    .form-control:focus {
+      color: #ffffff !important;
+      background: rgba(7, 11, 34, 0.98) !important;
+      border-color: rgba(82, 154, 255, 0.62) !important;
+      box-shadow: 0 0 0 1px rgba(82, 154, 255, 0.22) !important;
+    }
+
+    .form-control:disabled,
+    .form-control[readonly] {
+      color: rgba(255, 255, 255, 0.78) !important;
+      -webkit-text-fill-color: rgba(255, 255, 255, 0.78);
+      opacity: 1;
+    }
+
+    .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.48) !important;
+    }
+  }
+
+  .subtotal-row td {
+    background: rgba(255, 255, 255, 0.04) !important;
+    color: rgba(255, 255, 255, 0.96) !important;
+  }
+
+  .grand-total-row td {
+    background: rgba(64, 188, 105, 0.1) !important;
+    font-weight: 600;
+    color: #fff !important;
+  }
+
+  .table-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .status-draft {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f6f8ff !important;
+  }
+
+  .status-submitted {
+    background: rgba(255, 193, 7, 0.16);
+    color: #ffd970 !important;
+  }
+
+  .status-revision {
+    background: rgba(255, 94, 94, 0.16);
+    color: #ffabab !important;
+  }
+
+  .status-approved {
+    background: rgba(64, 188, 105, 0.16);
+    color: #99f0a5 !important;
+  }
+
+  .work-type-checkboxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 8px 16px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .approval-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .approval-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .approval-meta-text {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.9rem;
+  }
+
+  .approval-note-box {
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .approval-history {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .approval-history-item {
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .approval-history-top,
+  .approval-history-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .approval-history-top {
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .approval-history-meta {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.88rem;
+  }
+
+  .approval-history-note {
+    margin: 8px 0 0;
+    color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+body.light-blue.theme--white {
+  .basic-cost-page {
+    .page-title {
+      color: #0f172a;
+    }
+
+    .page-subtitle {
+      color: #64748b;
+    }
+
+    .basic-cost-table > thead > tr > th,
+    .master-table > thead > tr > th {
+      color: #1e293b !important;
+      background: rgba(241, 245, 249, 0.96) !important;
+      border-bottom-color: rgba(203, 213, 225, 0.95) !important;
+    }
+
+    .basic-cost-table > tbody > tr > td,
+    .basic-cost-table > tfoot > tr > td,
+    .master-table > tbody > tr > td {
+      color: #334155 !important;
+      background: rgba(255, 255, 255, 0.92) !important;
+      border-color: rgba(226, 232, 240, 0.95) !important;
+    }
+
+    .master-table > tbody > tr:nth-child(even) > td {
+      background: rgba(241, 245, 249, 0.9) !important;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "format": "EserScheduler",
+  "version": 3,
+  "project": {
+    "name": "Contoh - Survei Topografi",
+    "dataDate": "2026-09-01",
+    "displayMode": "relative",
+    "projectStartDate": null,
+    "calendar": {"name": "Kalender 6 Hari", "workingDays": [1, 2, 3, 4, 5, 6]},
+    "baseline": null,
+    "deployments": [],
+    "activities": [
+      {"id":"TOP-010","wbs":"1.0","name":"Kickoff dan pengumpulan data eksisting","duration":1,"pic":"Project Manager","predecessors":[],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"TOP-020","wbs":"1.0","name":"Mobilisasi dan safety induction","duration":3,"pic":"HSE Officer","predecessors":[{"id":"TOP-010","type":"FS","lag":0}],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"TOP-030","wbs":"2.0","name":"Reconnaissance dan pemasangan KKH/KKV","duration":3,"pic":"Topographic Surveyor","predecessors":[{"id":"TOP-020","type":"FS","lag":0}],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"TOP-040","wbs":"2.0","name":"Observasi GNSS kontrol horizontal","duration":2,"pic":"Topographic Surveyor","predecessors":[{"id":"TOP-030","type":"FS","lag":0}],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"TOP-050","wbs":"2.0","name":"Pengukuran leveling kontrol vertikal","duration":2,"pic":"Surveyor","predecessors":[{"id":"TOP-030","type":"FS","lag":0}],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"TOP-060","wbs":"3.0","name":"Pengukuran detail situasi dan cross section","duration":8,"pic":"Surveyor","predecessors":[{"id":"TOP-040","type":"FS","lag":0},{"id":"TOP-050","type":"FS","lag":0}],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"TOP-070","wbs":"4.0","name":"Download, adjustment, dan QC data","duration":5,"pic":"Data Processor","predecessors":[{"id":"TOP-060","type":"SS","lag":2}],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"TOP-080","wbs":"5.0","name":"Pembuatan DTM, kontur, dan drawing","duration":5,"pic":"CAD/GIS Specialist","predecessors":[{"id":"TOP-070","type":"FS","lag":0}],"start":"2000-01-03","status":"Not started","progress":0},
+      {"id":"TOP-090","wbs":"5.0","name":"Laporan dan finalisasi deliverable","duration":3,"pic":"Project Manager","predecessors":[{"id":"TOP-080","type":"FS","lag":0}],"start":"2000-01-03","status":"Not started","progress":0}
+    ]
+  }
+}
