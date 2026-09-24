@@ -1,0 +1,13 @@
+---
+deployment:
+  tasks:
+    # Frontend build. Copying does not remove unrelated files such as .well-known.
+    - /bin/cp -a frontend/dist/. /home/ynsrmwpp/cost.esergeosurvey.com/
+    - /bin/cp -f frontend/public/.htaccess /home/ynsrmwpp/cost.esergeosurvey.com/.htaccess
+
+    # Backend application. The production .env is intentionally not in Git.
+    - /bin/cp -a backend/app/. /home/ynsrmwpp/api-costing.esergeosurvey.com/app/
+    - /bin/cp -a backend/public/. /home/ynsrmwpp/api-costing.esergeosurvey.com/public/
+    - /bin/cp -a backend/system/. /home/ynsrmwpp/api-costing.esergeosurvey.com/system/
+    - /bin/cp -a backend/writable/. /home/ynsrmwpp/api-costing.esergeosurvey.com/writable/
+    - /bin/cp -f backend/composer.json backend/composer.lock backend/spark backend/.htaccess /home/ynsrmwpp/api-costing.esergeosurvey.com/
