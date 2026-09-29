@@ -67,3 +67,13 @@
 #--------------------------------------------------------------------
 
 # logger.threshold = 4
+
+#--------------------------------------------------------------------
+# PROJECT MONITORING PORTAL
+#--------------------------------------------------------------------
+
+# projectMonitoring.enabled = false
+# projectMonitoring.baseUrl = 'https://client-project-monitoring-portal.ronilece18.chatgpt.site'
+# projectMonitoring.syncSecret = ''
+# projectMonitoring.siteBypassToken = ''
+# projectMonitoring.timeout = 10

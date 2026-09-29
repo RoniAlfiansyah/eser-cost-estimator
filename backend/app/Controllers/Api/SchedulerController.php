@@ -3,6 +3,7 @@
 namespace App\Controllers\Api;
 
 use App\Controllers\BaseController;
+use App\Libraries\ProjectMonitoringSync;
 use Throwable;
 
 class SchedulerController extends BaseController
@@ -113,7 +114,11 @@ class SchedulerController extends BaseController
             $action = 'create';
         }
         $this->writeAudit($action, 'scheduler_project', $id, 'Menyimpan proyek schedule.');
-        return $this->ok(['id' => $id]);
+        $savedProject = $this->db->table('scheduler_projects')->where('id', $id)->get()->getRowArray();
+        $monitoringSync = $savedProject
+            ? (new ProjectMonitoringSync())->sync($savedProject)
+            : ['status' => 'failed', 'message' => 'Proyek tersimpan tetapi tidak dapat dibaca ulang.'];
+        return $this->ok(['id' => $id, 'monitoringSync' => $monitoringSync]);
     }
 
     private function master()
