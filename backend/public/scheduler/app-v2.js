@@ -133,7 +133,11 @@ function normalizeProject(raw, name = "Untitled Project") {
     predecessors: Array.isArray(a.predecessors) ? a.predecessors.map(r => ({id:String(r.id || r.predecessor || "").toUpperCase(),type:["FS","SS","FF","SF"].includes(r.type || r.relationshipType) ? (r.type || r.relationshipType) : "FS",lag:Number(r.lag || 0)})).filter(r => r.id)
       : [...(a.predecessor ? [{id:a.predecessor,type:a.relationshipType || "FS",lag:Number(a.lag || 0)}] : []), ...((a.extraRelationships || []).map(r => ({id:r.predecessor,type:r.relationshipType || "FS",lag:Number(r.lag || 0)})))],
     start: /^\d{4}-\d{2}-\d{2}$/.test(a.start || "") ? a.start : isoToday(), startConstraint: /^\d{4}-\d{2}-\d{2}$/.test(a.startConstraint || "") ? a.startConstraint : null, status: a.status || "Not started",
-    progress: Math.min(100, Math.max(0, Number(a.progress ?? (a.status === "Completed" ? 100 : 0))))
+    progress: Math.min(100, Math.max(0, Number(a.progress ?? (a.status === "Completed" ? 100 : 0)))),
+    measurementMethod: ["quantity","milestone","duration"].includes(a.measurementMethod) ? a.measurementMethod : "milestone",
+    targetQuantity: Math.max(.000001, Number(a.targetQuantity || (a.measurementMethod === "duration" ? a.duration : 1))),
+    unit: String(a.unit || (a.measurementMethod === "duration" ? "hari" : a.measurementMethod === "milestone" ? "milestone" : "unit")),
+    weight: Math.min(100, Math.max(0, Number(a.weight || 0)))
   })) : [];
   source.displayMode = source.displayMode === "relative" ? "relative" : "date";
   source.projectStartDate = /^\d{4}-\d{2}-\d{2}$/.test(source.projectStartDate || "")
@@ -637,7 +641,10 @@ async function saveActivityForm(event) {
   if(state.project.activities.some(activity=>activity.id===id&&activity.id!==state.editingId)){$("#activityError").textContent=`ID ${id} sudah digunakan.`;return;}
   const relative=state.project.displayMode==="relative",start=relative?toISO(addWorkdays(scheduleAnchor(),Math.max(1,Number(data.startDay||1))-1)):data.start;
   if(!start){$("#activityError").textContent="Tanggal mulai wajib diisi.";return;}
-  const old=state.project.activities.find(activity=>activity.id===state.editingId),selectedWbsId=Number($("#formWbsSelect").value),selectedWbs=state.master.wbs.find(item=>item.id===selectedWbsId),manualActivity=$("#formActivitySelect").value==="__manual__",existingMaster=state.master.activities.find(item=>String(item.activity_code).toUpperCase()===id),shouldCreateMaster=!old&&manualActivity&&Boolean(selectedWbs)&&!existingMaster&&state.user?.role==="admin",activity={id,wbs:data.wbs.trim(),name:data.name.trim(),duration:Number(data.duration),pic:data.pic.trim(),predecessors:old?.predecessors||[],start,startConstraint:old?.startConstraint||null,status:data.status,progress:Number(data.progress)};
+  const targetQuantity=Number(data.targetQuantity),weight=Number(data.weight||0);
+  if(!Number.isFinite(targetQuantity)||targetQuantity<=0){$("#activityError").textContent="Target quantity harus lebih besar dari 0.";return;}
+  if(!Number.isFinite(weight)||weight<0||weight>100){$("#activityError").textContent="Bobot aktivitas harus berada di antara 0 dan 100%.";return;}
+  const old=state.project.activities.find(activity=>activity.id===state.editingId),selectedWbsId=Number($("#formWbsSelect").value),selectedWbs=state.master.wbs.find(item=>item.id===selectedWbsId),manualActivity=$("#formActivitySelect").value==="__manual__",existingMaster=state.master.activities.find(item=>String(item.activity_code).toUpperCase()===id),shouldCreateMaster=!old&&manualActivity&&Boolean(selectedWbs)&&!existingMaster&&state.user?.role==="admin",activity={id,wbs:data.wbs.trim(),name:data.name.trim(),duration:Number(data.duration),pic:data.pic.trim(),predecessors:old?.predecessors||[],start,startConstraint:old?.startConstraint||null,status:data.status,progress:Number(data.progress),measurementMethod:data.measurementMethod,targetQuantity,unit:data.unit.trim()||"unit",weight};
   if(button)button.disabled=true;
   try {
     let masterSaved=false;

@@ -64,15 +64,24 @@ class ProjectMonitoringSync
         foreach ($activities as $index => $activity) {
             $sourceId = trim((string) ($activity['id'] ?? ''));
             if ($sourceId === '') continue;
-            $weight = isset($activity['weight']) && is_numeric($activity['weight']) ? (float) $activity['weight'] : $defaultWeight;
+            $weight = isset($activity['weight']) && is_numeric($activity['weight']) && (float) $activity['weight'] > 0 ? (float) $activity['weight'] : $defaultWeight;
+            $measurementMethod = in_array($activity['measurementMethod'] ?? null, ['quantity', 'milestone', 'duration'], true)
+                ? (string) $activity['measurementMethod']
+                : 'milestone';
+            $targetQuantity = isset($activity['targetQuantity']) && is_numeric($activity['targetQuantity']) && (float) $activity['targetQuantity'] > 0
+                ? (float) $activity['targetQuantity']
+                : ($measurementMethod === 'duration' ? max(1, (float) ($activity['duration'] ?? 1)) : 1.0);
+            $unit = trim((string) ($activity['unit'] ?? ''));
+            if ($unit === '') $unit = $measurementMethod === 'duration' ? 'hari' : ($measurementMethod === 'milestone' ? 'milestone' : 'unit');
             $mapped[] = [
                 'id' => $sourceId,
                 'name' => trim((string) ($activity['name'] ?? $sourceId)),
                 'plannedStart' => $hasCalendarDates ? $this->validDate($activity['start'] ?? null) : null,
                 'plannedFinish' => $this->activityFinish($activity, $data, $hasCalendarDates),
                 'weight' => round(max(0, min(100, $weight)), 6),
-                'targetQuantity' => isset($activity['targetQuantity']) && is_numeric($activity['targetQuantity']) ? max(0, (float) $activity['targetQuantity']) : null,
-                'unit' => ($unit = trim((string) ($activity['unit'] ?? ''))) !== '' ? $unit : null,
+                'targetQuantity' => $targetQuantity,
+                'unit' => $unit,
+                'measurementMethod' => $measurementMethod,
                 'sortOrder' => $index,
                 'archived' => false,
                 'dependencies' => array_values(array_filter(array_map(static function ($dependency): ?array {
